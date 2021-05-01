@@ -96,7 +96,7 @@ sed -i.bak -E 's#^(persistent_peers[[:space:]]+=[[:space:]]+).*$#\1"'$PEERS'"#' 
 
 echo "Enter minimum-gas-prices"
 read -p "minimum-gas-prices: " GAS_PRICE
-sed -i.bak -E 's#^(minimum-gas-prices[[:space:]]+=[[:space:]]+)""$#\1"'$GAS_PRICE'"#' ~/.${BIN_NAME}/config/app.toml
+sed -i.bak -E 's#^(minimum-gas-prices[[:space:]]+=[[:space:]]+).*$#\1"'$GAS_PRICE'"#' ~/.${BIN_NAME}/config/app.toml
 
 echo "---------------"
 echo "${BIN_NAME} Configured and waiting to start."
