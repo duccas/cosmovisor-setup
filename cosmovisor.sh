@@ -27,11 +27,15 @@ mkdir -p $GOPATH/src/github.com/cosmos && cd $GOPATH/src/github.com/cosmos && gi
 
 mv cosmovisor $GOBIN
 
+echo "---------------"
 echo "Cosmovisor built and installed."
+echo "---------------"
 
 mkdir $GOPATH/src/github.com/${BIN_NAME} && cd $GOPATH/src/github.com/${BIN_NAME} && git clone https://github.com/${GIT_PATH} && cd ${BIN_NAME} && git fetch && git checkout tags/${BIN_VER} && make build
 
+echo "---------------"
 echo "${BIN_NAME} built and installed."
+echo "---------------"
 
 cp build/${BIN_NAME} ${HOME}/.${BIN_NAME}/cosmovisor/genesis/bin
 
@@ -62,6 +66,38 @@ WantedBy=multi-user.target
 sudo systemctl daemon-reload && sudo systemctl enable cosmovisor.service
 
 echo "---------------"
+echo "cosmovisor.service installed."
+echo "---------------"
+
+echo "Enter your Moniker"
+read -p "Moniker: " MONIKER
+desmos init $MONIKER
+
+echo "---------------"
+echo "Your Moniker: ${MONIKER}, initialised."
+echo "---------------"
+
+echo "Enter link to Genesis file"
+read -p "Genesis link: " GENESIS
+curl $GENESIS > ~/.${BIN_NAME}/config/genesis.json
+
+echo "Enter Seeds"
+read -p "Seed: " SEED
+sed -i.bak -E 's#^(seeds[[:space:]]+=[[:space:]]+).*$#\1"${SEED}"#' ~/.${BIN_NAME}/config/config.toml
+
+echo "Enter Peers"
+read -p "Persistent_peers: " PEERS
+sed -i.bak -E 's#^(persistent_peers[[:space:]]+=[[:space:]]+).*$#\1"${PEERS}"#' ~/.${BIN_NAME}/config/config.toml
+
+echo "Enter minimum-gas-prices"
+read -p "minimum-gas-prices: " GAS_PRICE
+sed -i.bak -E 's#^(minimum-gas-prices[[:space:]]+=[[:space:]]+)""$#\1"${GAS_PRICE}"#' ~/.${BIN_NAME}/config/app.toml
+
+echo "---------------"
+echo "${BIN_NAME} Configured and waiting to start."
+echo "---------------"
+
+echo "---------------"
 echo "---------------"
 echo "Installation of golang, ${BIN_NAME}, and cosmovisor complete."
 
@@ -70,3 +106,9 @@ echo "---------------"
 
 echo "To the Earth!"
 echo "---------------"
+
+sleep 5
+
+sudo systemctl start cosmovisor.service
+
+journalctl -u cosmovisor.service -f
