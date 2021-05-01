@@ -7,17 +7,13 @@ BIN_VER=$4
 
 if [ "$COSMOVISOR" == "" ]; then
     exit
-fi
 if [ "$GIT_PATH" == "" ]; then
     exit
-fi
 if [ "$BIN_NAME" == "" ]; then
     exit
-fi
 if [ "$BIN_VER" == "" ]; then
     exit
-fi
-
+    
 mkdir -p $GOBIN ${HOME}/.${BIN_NAME}/cosmovisor/genesis/bin ${HOME}/.${BIN_NAME}/cosmovisor/upgrades/Gir/bin
 
 mkdir -p $GOPATH/src/github.com/cosmos && cd $GOPATH/src/github.com/cosmos && git clone https://github.com/cosmos/cosmos-sdk && cd cosmos-sdk/cosmovisor && git checkout ${COSMOVISOR} && make cosmovisor
