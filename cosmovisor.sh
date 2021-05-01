@@ -98,11 +98,6 @@ echo "Enter minimum-gas-prices"
 read -p "minimum-gas-prices: " GAS_PRICE
 sed -i.bak -E 's#^(minimum-gas-prices[[:space:]]+=[[:space:]]+)""$#\1"${GAS_PRICE}"#' ~/.${BIN_NAME}/config/app.toml
 
-}
-
-configuring
-initialising
-
 echo "---------------"
 echo "${BIN_NAME} Configured and waiting to start."
 echo "---------------"
@@ -122,3 +117,8 @@ sleep 5
 sudo systemctl start cosmovisor.service
 
 journalctl -u cosmovisor.service -f
+
+}
+
+configuring
+initialising
