@@ -1,15 +1,20 @@
 #!/bin/bash
 
 COSMOVISOR=$1
-GIT_PATH=$2
-BIN_NAME=$3
-BIN_VER=$4
+GIT_NAME=$2
+GIT_FOLDER=$3
+BIN_NAME=$4
+BIN_VER=$5
 
 if [ "$COSMOVISOR" == "" ]; then
     exit
 fi
 
-if [ "$GIT_PATH" == "" ]; then
+if [ "$GIT_NAME" == "" ]; then
+    exit
+fi
+
+if [ "$GIT_FOLDER" == "" ]; then
     exit
 fi
 
@@ -33,7 +38,7 @@ echo "---------------"
 echo "Cosmovisor built and installed."
 echo "---------------"
 
-mkdir $GOPATH/src/github.com/${BIN_NAME} && cd $GOPATH/src/github.com/${BIN_NAME} && git clone https://github.com/${GIT_PATH} && cd ${BIN_NAME} && git fetch && git checkout tags/${BIN_VER} && make build
+mkdir $GOPATH/src/github.com/${GIT_FOLDER} && cd $GOPATH/src/github.com/${GIT_FOLDER} && git clone https://github.com/${GIT_NAME}/${GIT_FOLDER} && cd ${GIT_FOLDER} && git fetch && git checkout tags/${BIN_VER} && make build
 
 echo "---------------"
 echo "${BIN_NAME} built and installed."
