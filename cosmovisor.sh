@@ -88,15 +88,15 @@ curl $GENESIS > ~/.${BIN_NAME}/config/genesis.json
 
 echo "Enter Seeds"
 read -p "Seed: " SEED
-sed -i.bak -E 's#^(seeds[[:space:]]+=[[:space:]]+).*$#\1"${SEED}"#' ~/.${BIN_NAME}/config/config.toml
+sed -i.bak -E 's#^(seeds[[:space:]]+=[[:space:]]+).*$#\1"$SEED"#' ~/.${BIN_NAME}/config/config.toml
 
 echo "Enter Peers"
 read -p "Persistent_peers: " PEERS
-sed -i.bak -E 's#^(persistent_peers[[:space:]]+=[[:space:]]+).*$#\1"${PEERS}"#' ~/.${BIN_NAME}/config/config.toml
+sed -i.bak -E 's#^(persistent_peers[[:space:]]+=[[:space:]]+).*$#\1"$PEERS"#' ~/.${BIN_NAME}/config/config.toml
 
 echo "Enter minimum-gas-prices"
 read -p "minimum-gas-prices: " GAS_PRICE
-sed -i.bak -E 's#^(minimum-gas-prices[[:space:]]+=[[:space:]]+)""$#\1"${GAS_PRICE}"#' ~/.${BIN_NAME}/config/app.toml
+sed -i.bak -E 's#^(minimum-gas-prices[[:space:]]+=[[:space:]]+)""$#\1"$GAS_PRICE"#' ~/.${BIN_NAME}/config/app.toml
 
 echo "---------------"
 echo "${BIN_NAME} Configured and waiting to start."
