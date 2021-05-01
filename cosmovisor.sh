@@ -44,9 +44,14 @@ echo "---------------"
 echo "${BIN_NAME} built and installed."
 echo "---------------"
 
-cp build/${BIN_NAME} ${HOME}/.${BIN_NAME}/cosmovisor/genesis/bin
-
-cp build/${BIN_NAME} ${HOME}/.${BIN_NAME}/cosmovisor/upgrades/Gir/bin
+if [ -e build/${BIN_NAME} ]; then
+  cp build/${BIN_NAME} ${HOME}/.${BIN_NAME}/cosmovisor/genesis/bin
+  cp build/${BIN_NAME} ${HOME}/.${BIN_NAME}/cosmovisor/upgrades/Gir/bin
+else
+  cd
+  cp $GOBIN/${BIN_NAME} ${HOME}/.${BIN_NAME}/cosmovisor/genesis/bin
+  cp $GOBIN/${BIN_NAME} ${HOME}/.${BIN_NAME}/cosmovisor/upgrades/Gir/bin
+fi
 
 ln -s -T ${HOME}/.${BIN_NAME}/cosmovisor/upgrades/Gir ${HOME}/.${BIN_NAME}/cosmovisor/current
 
