@@ -44,7 +44,7 @@ echo "---------------"
 echo "${BIN_NAME} built and installed."
 echo "---------------"
 
-if [ -e build/${BIN_NAME} ]; then
+if [ -e $GOPATH/src/github.com/${GIT_FOLDER}/${GIT_FOLDER}/build/${BIN_NAME} ]; then
   cp build/${BIN_NAME} ${HOME}/.${BIN_NAME}/cosmovisor/genesis/bin
   cp build/${BIN_NAME} ${HOME}/.${BIN_NAME}/cosmovisor/upgrades/Gir/bin
 else
