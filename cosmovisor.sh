@@ -21,6 +21,8 @@ if [ "$BIN_VER" == "" ]; then
     exit
 fi
 
+function configuring {
+
 mkdir -p $GOBIN ${HOME}/.${BIN_NAME}/cosmovisor/genesis/bin ${HOME}/.${BIN_NAME}/cosmovisor/upgrades/Gir/bin
 
 mkdir -p $GOPATH/src/github.com/cosmos && cd $GOPATH/src/github.com/cosmos && git clone https://github.com/cosmos/cosmos-sdk && cd cosmos-sdk/cosmovisor && git checkout ${COSMOVISOR} && make cosmovisor
@@ -64,6 +66,9 @@ WantedBy=multi-user.target
 " >/etc/systemd/system/cosmovisor.service
 
 sudo systemctl daemon-reload && sudo systemctl enable cosmovisor.service
+}
+
+function initialising {
 
 echo "---------------"
 echo "cosmovisor.service installed."
@@ -93,6 +98,8 @@ echo "Enter minimum-gas-prices"
 read -p "minimum-gas-prices: " GAS_PRICE
 sed -i.bak -E 's#^(minimum-gas-prices[[:space:]]+=[[:space:]]+)""$#\1"${GAS_PRICE}"#' ~/.${BIN_NAME}/config/app.toml
 
+}
+
 echo "---------------"
 echo "${BIN_NAME} Configured and waiting to start."
 echo "---------------"
@@ -106,6 +113,9 @@ echo "---------------"
 
 echo "To the Earth!"
 echo "---------------"
+
+configuring
+initialising
 
 sleep 5
 
