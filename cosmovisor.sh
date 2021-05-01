@@ -27,9 +27,11 @@ mkdir -p $GOPATH/src/github.com/cosmos && cd $GOPATH/src/github.com/cosmos && gi
 
 mv cosmovisor $GOBIN
 
-echo "Cosmovisor built and installed. Press space to continue."
+echo "Cosmovisor built and installed."
 
 mkdir $GOPATH/src/github.com/${BIN_NAME} && cd $GOPATH/src/github.com/${BIN_NAME} && git clone https://github.com/${GIT_PATH} && cd ${BIN_NAME} && git fetch && git checkout tags/${BIN_VER} && make build
+
+echo "${BIN_NAME} built and installed."
 
 mv build/${BIN_NAME} ${HOME}/.${BIN_NAME}/cosmovisor/genesis/bin
 
