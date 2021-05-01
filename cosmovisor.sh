@@ -7,10 +7,13 @@ BIN_VER=$4
 
 if [ "$COSMOVISOR" == "" ]; then
     exit
+fi
 if [ "$GIT_PATH" == "" ]; then
     exit
+fi
 if [ "$BIN_NAME" == "" ]; then
     exit
+fi
 if [ "$BIN_VER" == "" ]; then
     exit
 fi
@@ -34,7 +37,6 @@ ln -s -T ${HOME}/.${BIN_NAME}/cosmovisor/upgrades/Gir ${HOME}/.${BIN_NAME}/cosmo
 cd
 echo "export PATH=/root/.${BIN_NAME}/cosmovisor/current/bin:\$PATH" >> ~/.profile
 . ~/.profile
-
 
 echo "[Unit]
 Description=${BIN_NAME}
