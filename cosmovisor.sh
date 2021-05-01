@@ -100,6 +100,9 @@ sed -i.bak -E 's#^(minimum-gas-prices[[:space:]]+=[[:space:]]+)""$#\1"${GAS_PRIC
 
 }
 
+configuring
+initialising
+
 echo "---------------"
 echo "${BIN_NAME} Configured and waiting to start."
 echo "---------------"
@@ -113,9 +116,6 @@ echo "---------------"
 
 echo "To the Earth!"
 echo "---------------"
-
-configuring
-initialising
 
 sleep 5
 
