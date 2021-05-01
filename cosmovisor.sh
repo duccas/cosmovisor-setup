@@ -8,12 +8,15 @@ BIN_VER=$4
 if [ "$COSMOVISOR" == "" ]; then
     exit
 fi
+
 if [ "$GIT_PATH" == "" ]; then
     exit
 fi
+
 if [ "$BIN_NAME" == "" ]; then
     exit
 fi
+
 if [ "$BIN_VER" == "" ]; then
     exit
 fi
