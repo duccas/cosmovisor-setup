@@ -18,32 +18,6 @@ if [ "$BIN_VER" == "" ]; then
     exit
 fi
 
-echo "Check the GO VERSION: if it's empty, please press Ctrl-c to exit,"
-echo "and then reboot, and run this script again."
-go version
-echo "If GO VERSION correct"
-echo "Press space to continue."
-read -s -d ' '
-
-echo "Checking PATHs"
-echo "PATH is:" $PATH
-echo "GOPATH is:" $GOPATH
-echo "GOBIN is:" $GOBIN
-echo "If all PATHs correct"
-echo "Press space to continue."
-read -s -d ' '
-
-# mkdir -p $GOPATH/src/github.com/regen
-# cd $GOPATH/src/github.com/regen
-# git clone https://github.com/regen-network/regen-ledger.git && cd regen-ledger
-# git checkout v0.6.1
-# EXPERIMENTAL=true make install
-
-# regen version --long
-
-# echo "Check the regen version. Press space to continue."
-# read -s -d ' '
-
 mkdir -p $GOBIN ${HOME}/.${BIN_NAME}/cosmovisor/genesis/bin ${HOME}/.${BIN_NAME}/cosmovisor/upgrades/Gir/bin
 
 mkdir -p $GOPATH/src/github.com/cosmos && cd $GOPATH/src/github.com/cosmos && git clone https://github.com/cosmos/cosmos-sdk && cd cosmos-sdk/cosmovisor && git checkout ${COSMOVISOR} && make cosmovisor
@@ -51,7 +25,6 @@ mkdir -p $GOPATH/src/github.com/cosmos && cd $GOPATH/src/github.com/cosmos && gi
 mv cosmovisor $GOBIN
 
 echo "Cosmovisor built and installed. Press space to continue."
-read -s -d ' '
 
 mkdir $GOPATH/src/github.com/${BIN_NAME} && cd $GOPATH/src/github.com/${BIN_NAME} && git clone https://github.com/${GIT_PATH} && cd ${BIN_NAME} && git fetch && git checkout tags/${BIN_VER} && make build
 
@@ -62,8 +35,6 @@ read -s -d ' '
 
 mv build/${BIN_NAME} ${HOME}/.${BIN_NAME}/cosmovisor/upgrades/Gir/bin
 
-# Use the first line if you're starting from before block 138650.
-# ln -s -T ${HOME}/.regen/cosmovisor/genesis ${HOME}/.regen/cosmovisor/current
 ln -s -T ${HOME}/.${BIN_NAME}/cosmovisor/upgrades/Gir ${HOME}/.${BIN_NAME}/cosmovisor/current
 
 cd
