@@ -81,7 +81,7 @@ echo "---------------"
 
 echo "Enter your Moniker"
 read -p "Moniker: " MONIKER
-desmos init $MONIKER
+${BIN_NAME} init $MONIKER
 
 echo "---------------"
 echo "Your Moniker: ${MONIKER}, initialised."
