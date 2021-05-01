@@ -30,9 +30,6 @@ mkdir $GOPATH/src/github.com/${BIN_NAME} && cd $GOPATH/src/github.com/${BIN_NAME
 
 mv build/${BIN_NAME} ${HOME}/.${BIN_NAME}/cosmovisor/genesis/bin
 
-echo "Regen-ledger v0.6.0 and v0.6.1 built and installed. Press space to continue."
-read -s -d ' '
-
 mv build/${BIN_NAME} ${HOME}/.${BIN_NAME}/cosmovisor/upgrades/Gir/bin
 
 ln -s -T ${HOME}/.${BIN_NAME}/cosmovisor/upgrades/Gir ${HOME}/.${BIN_NAME}/cosmovisor/current
