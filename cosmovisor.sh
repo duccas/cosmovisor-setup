@@ -33,9 +33,9 @@ mkdir $GOPATH/src/github.com/${BIN_NAME} && cd $GOPATH/src/github.com/${BIN_NAME
 
 echo "${BIN_NAME} built and installed."
 
-mv build/${BIN_NAME} ${HOME}/.${BIN_NAME}/cosmovisor/genesis/bin
+cp build/${BIN_NAME} ${HOME}/.${BIN_NAME}/cosmovisor/genesis/bin
 
-mv build/${BIN_NAME} ${HOME}/.${BIN_NAME}/cosmovisor/upgrades/Gir/bin
+cp build/${BIN_NAME} ${HOME}/.${BIN_NAME}/cosmovisor/upgrades/Gir/bin
 
 ln -s -T ${HOME}/.${BIN_NAME}/cosmovisor/upgrades/Gir ${HOME}/.${BIN_NAME}/cosmovisor/current
 
