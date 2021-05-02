@@ -18,11 +18,11 @@ wget https://raw.githubusercontent.com/icohigh/cosmovisor-setup/main/cosmovisor.
 && ./cosmovisor.sh COSMOVISOR_VER GIT_NAME GIT_FOLDER BIN_NAME BIN_VER
 ```
 ### On the example of the Desmos project:
-COSMOVISOR_VER = v0.42.4
-GIT_NAME = desmos-labs
-GIT_FOLDER = desmos
-BIN_NAME = desmos
-BIN_VER = v0.16.0
+`COSMOVISOR_VER = v0.42.4`
+`GIT_NAME = desmos-labs`
+`GIT_FOLDER = desmos`
+`BIN_NAME = desmos`
+`BIN_VER = v0.16.0`
 
 The run command should look like this:
 ```
