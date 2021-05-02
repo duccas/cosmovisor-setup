@@ -118,12 +118,11 @@ echo "---------------"
 
 echo "---------------"
 echo "---------------"
-echo -e "$YELLOW Installation of golang, ${BIN_NAME}, and cosmovisor complete.\033[0m"
+echo -e "$YELLOW Installation of ${BIN_NAME}, and cosmovisor complete.\033[0m"
 
-echo -e "$YELLOW sudo systemctl start cosmovisor.service\033[0m"
+echo ""
 echo "---------------"
-
-echo -e "$YELLOW To the Earth!\033[0m"
+echo -e "$YELLOW Waiting for start the chain!\033[0m"
 echo "---------------"
 
 sleep 5
