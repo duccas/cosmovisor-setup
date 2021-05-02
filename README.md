@@ -2,7 +2,7 @@
 
 
 ## 1. Install GOLANG.
-If you need install another GO versin you can change it in `./go.sh -v 1.15.7`. Or you can install GO from [official website](https://golang.org/doc/install).
+If you need install another GO version you can change it in `./go.sh -v 1.15.7`. Or you can install GO from [official website](https://golang.org/doc/install).
 ```
 wget https://gist.githubusercontent.com/icohigh/87158d3b79f9cb94ef15ba48072e240e/raw/559308a871b1010a9634c690e29ad86878f611a8/go.sh \
 && chmod +x go.sh \
@@ -17,12 +17,12 @@ wget https://raw.githubusercontent.com/icohigh/cosmovisor-setup/main/cosmovisor.
 && chmod +x cosmovisor.sh \
 && ./cosmovisor.sh COSMOVISOR_VER GIT_NAME GIT_FOLDER BIN_NAME BIN_VER
 ```
-### On the example of the Desmos project:
-`COSMOVISOR_VER = v0.42.4` 
-`GIT_NAME = desmos-labs` 
-`GIT_FOLDER = desmos` 
-`BIN_NAME = desmos` 
-`BIN_VER = v0.16.0` 
+#### On the example of the Desmos project:
+`COSMOVISOR_VER = v0.42.4`  
+`GIT_NAME = desmos-labs`  
+`GIT_FOLDER = desmos`  
+`BIN_NAME = desmos`  
+`BIN_VER = v0.16.0`
 
 The run command should look like this:
 ```
