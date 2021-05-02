@@ -1,5 +1,9 @@
 #!/bin/bash
 
+RED="\033[31m"
+YELLOW="\033[33m"
+GREEN="\033[32m"
+
 COSMOVISOR=$1
 GIT_NAME=$2
 GIT_FOLDER=$3
@@ -35,13 +39,13 @@ mkdir -p $GOPATH/src/github.com/cosmos && cd $GOPATH/src/github.com/cosmos && gi
 mv cosmovisor $GOBIN
 
 echo "---------------"
-echo "Cosmovisor built and installed."
+echo "$YELLOW Cosmovisor built and installed."
 echo "---------------"
 
 mkdir $GOPATH/src/github.com/${GIT_FOLDER} && cd $GOPATH/src/github.com/${GIT_FOLDER} && git clone https://github.com/${GIT_NAME}/${GIT_FOLDER} && cd ${GIT_FOLDER} && git fetch && git checkout tags/${BIN_VER} && make install && make build
 
 echo "---------------"
-echo "${BIN_NAME} built and installed."
+echo "$YELLOW ${BIN_NAME} built and installed."
 echo "---------------"
 
 if [ -e $GOPATH/src/github.com/${GIT_FOLDER}/${GIT_FOLDER}/build/${BIN_NAME} ]; then
@@ -81,45 +85,45 @@ sudo systemctl daemon-reload && sudo systemctl enable cosmovisor.service
 function initialising {
 
 echo "---------------"
-echo "cosmovisor.service installed."
+echo "$YELLOW cosmovisor.service installed."
 echo "---------------"
 
-echo "Enter your Moniker"
+echo "$GREEN Enter your Moniker"
 read -p "Moniker: " MONIKER
 ${BIN_NAME} init $MONIKER
 
 echo "---------------"
-echo "Your Moniker: ${MONIKER}, initialised."
+echo "$YELLOW Your Moniker: ${MONIKER}, initialised."
 echo "---------------"
 
-echo "Enter link to Genesis file"
+echo "$GREEN Enter link to Genesis file"
 read -p "Genesis link: " GENESIS
 curl $GENESIS > ~/.${BIN_NAME}/config/genesis.json
 
-echo "Enter Seeds"
+echo "$GREEN Enter Seeds"
 read -p "Seed: " SEED
 sed -i.bak -E 's#^(seeds[[:space:]]+=[[:space:]]+).*$#\1"'$SEED'"#' ~/.${BIN_NAME}/config/config.toml
 
-echo "Enter Peers"
+echo "$GREEN Enter Peers"
 read -p "Persistent_peers: " PEERS
 sed -i.bak -E 's#^(persistent_peers[[:space:]]+=[[:space:]]+).*$#\1"'$PEERS'"#' ~/.${BIN_NAME}/config/config.toml
 
-echo "Enter minimum-gas-prices"
+echo "$GREEN Enter minimum-gas-prices"
 read -p "minimum-gas-prices: " GAS_PRICE
 sed -i.bak -E 's#^(minimum-gas-prices[[:space:]]+=[[:space:]]+).*$#\1"'$GAS_PRICE'"#' ~/.${BIN_NAME}/config/app.toml
 
 echo "---------------"
-echo "${BIN_NAME} Configured and waiting to start."
+echo "$YELLOW ${BIN_NAME} Configured and waiting to start."
 echo "---------------"
 
 echo "---------------"
 echo "---------------"
-echo "Installation of golang, ${BIN_NAME}, and cosmovisor complete."
+echo "$YELLOW Installation of golang, ${BIN_NAME}, and cosmovisor complete."
 
-echo "sudo systemctl start cosmovisor.service"
+echo "$YELLOW sudo systemctl start cosmovisor.service"
 echo "---------------"
 
-echo "To the Earth!"
+echo "$YELLOW To the Earth!"
 echo "---------------"
 
 sleep 5
