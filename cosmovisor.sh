@@ -96,19 +96,19 @@ echo "---------------"
 echo -e "$YELLOW Your Moniker: ${MONIKER}, initialised.\033[0m"
 echo "---------------"
 
-echo -e "$GREEN Enter link to Genesis file\033[0m"
+echo -e "$GREEN Enter link to Genesis file (Example: https://raw.githubusercontent.com/desmos-labs/morpheus/master/morpheus-apollo-1/genesis.json)\033[0m"
 read -p "Genesis link: " GENESIS
 curl $GENESIS > ~/.${BIN_NAME}/config/genesis.json
 
-echo -e "$GREEN Enter Seeds\033[0m"
+echo -e "$GREEN Enter Seeds (Example: be3db0fe5ee7f764902dbcc75126a2e082cbf00c@seed-1.morpheus.desmos.network:26656)\033[0m"
 read -p "Seed: " SEED
 sed -i.bak -E 's#^(seeds[[:space:]]+=[[:space:]]+).*$#\1"'$SEED'"#' ~/.${BIN_NAME}/config/config.toml
 
-echo -e "$GREEN Enter Peers\033[0m"
+echo -e "$GREEN Enter Peers (Example: 728d59298dce64c72f13001f67a5b3e7fc080f91@135.181.201.2:26656)\033[0m"
 read -p "Persistent_peers: " PEERS
 sed -i.bak -E 's#^(persistent_peers[[:space:]]+=[[:space:]]+).*$#\1"'$PEERS'"#' ~/.${BIN_NAME}/config/config.toml
 
-echo -e "$GREEN Enter minimum-gas-prices\033[0m"
+echo -e "$GREEN Enter minimum-gas-prices (Example: 0.025udaric)\033[0m"
 read -p "minimum-gas-prices: " GAS_PRICE
 sed -i.bak -E 's#^(minimum-gas-prices[[:space:]]+=[[:space:]]+).*$#\1"'$GAS_PRICE'"#' ~/.${BIN_NAME}/config/app.toml
 
