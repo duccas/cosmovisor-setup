@@ -92,6 +92,12 @@ WantedBy=multi-user.target
 sudo systemctl daemon-reload && sudo systemctl enable cosmovisor.service
 }
 
+function updating {
+
+cd ${HOME}/.${BIN_NAME}/cosmovisor/upgrades/Gir
+mkdir release-20210216024800 release-20210217130000 release-20210301075600 changePoolFormula release-20210324073200 release-20210407042000 release-20210414000000 0.8.2 mainnet-0.8.2-slashing-params 0.8.4
+}
+
 function initialising {
 
 echo "---------------"
